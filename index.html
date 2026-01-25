@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pratik Tanikella — Portfolio</title>
+  <meta name="description" content="Pratik Tanikella — UNC Charlotte student, software engineer, and designer." />
+  <link rel="icon" href="/trynew23.avif" type="image/avif">
+  <style>
+    :root{
+      --bg:#071a15; /* deep green-black */
+      --green:#0b6a48; /* primary dark green */
+      --accent:#d4b44a; /* warm gold accent */
+      --muted:#cbd5cf;
+      --card:#0f1f1a;
+      --glass: rgba(255,255,255,0.04);
+      --radius:14px;
+      --maxw:1100px;
+      color-scheme: dark;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;color:var(--muted);background:var(--bg);-webkit-font-smoothing:antialiased}
+    a{color:var(--accent);text-decoration:none}
+
+    /* Top nav */
+    header{position:fixed;inset:0 0 auto 0;height:72px;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px);z-index:60}
+    nav{width:100%;max-width:var(--maxw);display:flex;align-items:center;justify-content:space-between;padding:0 24px}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:44px;height:44px;border-radius:10px;overflow:hidden;box-shadow:0 6px 18px rgba(5,10,7,0.6)}
+    .logo img{width:100%;height:100%;object-fit:cover}
+    .brand h3{margin:0;color:white;font-size:1.05rem}
+    .links{display:flex;gap:18px}
+    .links a{padding:8px 12px;border-radius:10px;color:var(--muted);font-weight:600}
+    .links a:hover{background:var(--glass);color:var(--accent)}
+
+    /* HERO */
+    .hero{min-height:86vh;display:grid;place-items:center;padding:100px 20px 60px}
+    .hero-inner{max-width:var(--maxw);width:100%;display:grid;grid-template-columns:1fr 300px;gap:36px;align-items:center}
+    .intro{padding:40px;background:linear-gradient(180deg, rgba(11,106,72,0.06), transparent);border-radius:var(--radius);box-shadow:0 10px 40px rgba(3,6,5,0.6)}
+    h1{color:white;font-size:2.6rem;margin:0 0 10px;letter-spacing:-0.5px}
+    .subtitle{color:var(--muted);margin:0 0 18px}
+    .contact{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+    .chip{background:transparent;border:1px solid rgba(255,255,255,0.04);padding:10px 14px;border-radius:12px;color:var(--muted);font-weight:600}
+    .cta{display:inline-flex;align-items:center;gap:10px;background:var(--green);color:white;padding:12px 16px;border-radius:12px;border:none;font-weight:700;cursor:pointer}
+    .cta:hover{filter:brightness(1.05)}
+
+    /* right panel image */
+    .hero-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:16px;box-shadow:0 18px 40px rgba(3,6,5,0.6);display:flex;flex-direction:column;gap:12px}
+    .hero-card img{width:100%;height:320px;object-fit:cover;object-position:center 10%;border-radius:10px}
+    .roles{display:flex;gap:10px;flex-wrap:wrap}
+    .role{background:rgba(255,255,255,0.03);padding:8px 10px;border-radius:10px;font-size:0.9rem}
+
+    /* sections */
+    main{max-width:var(--maxw);margin:0 auto;padding:40px 20px 80px}
+    section{margin:28px 0;padding:26px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);border-radius:12px}
+    h2{color:#dff3e8;margin:0 0 14px;font-size:1.25rem}
+    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+    .card{background:var(--card);padding:18px;border-radius:12px;box-shadow:inset 0 1px 0 rgba(255,255,255,0.02)}
+
+    /* timeline / experience */
+    .exp-item{border-left:3px solid var(--green);padding-left:14px;margin-bottom:16px}
+    .muted{color:var(--muted);font-size:0.95rem}
+
+    /* projects */
+    .projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+    .project{padding:14px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.015), transparent);transition:transform .28s, box-shadow .28s}
+    .project:hover{transform:translateY(-8px);box-shadow:0 18px 40px rgba(2,4,3,0.6)}
+
+    footer{padding:30px;text-align:center;color:var(--muted)}
+
+    /* animations */
+    .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease, transform .6s ease}
+    .reveal.visible{opacity:1;transform:none}
+
+    @media(max-width:980px){.hero-inner{grid-template-columns:1fr}.grid{grid-template-columns:1fr}.hero-card img{height:220px}}
+    @media(max-width:520px){h1{font-size:1.8rem}.nav-links{display:none}}
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="brand">
+        <div class="logo"><img src="newfav.png" alt="logo"></div>
+        <div>
+          <h3>Pratik V. Tanikella</h3>
+          <div class="muted">UNC Charlotte • B.S. Computer Science</div>
+        </div>
+      </div>
+      <div class="links nav-links">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="intro reveal">
+        <h1>Pratik Tanikella</h1>
+        <p class="subtitle">Aspiring Software Engineer</p>
+
+        <div class="contact">
+          <div class="chip"><a href="mailto:pratiktanikella@gmail.com">pratiktanikella@gmail.com</a></div>
+          <div class="chip"><a href="https://www.linkedin.com/in/pratik-tanikella/" target="_blank">linkedin.com/in/pratik-tanikella</a></div>
+        </div>
+
+        <div style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap">
+            <button class="cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get in touch</button>
+            <a class="chip" href="#projects">View projects</a>
+            <a class="chip" href="https://github.com/tanikellapratik23" target="_blank">GitHub</a>
+          </div>
+
+        <div style="margin-top:20px" class="muted">Expected Graduation: 2026 • Programming: Python, Java, C • Frameworks: Angular, LangChain</div>
+      </div>
+
+      <aside class="hero-card reveal">
+        <img src="img1.jpeg" alt="hero image">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px">
+          <div class="roles">
+            <div class="role">Application Engineer Intern at Vanguard</div>
+            <div class="role">Agentic AI, Python, and AWS</div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <main>
+    <section id="about" class="reveal">
+      <h2>About</h2>
+      <div class="grid">
+        <div>
+          <p>I’m a UNC Charlotte student studying Computer Science with a strong interest in building full‑stack applications, AI integrations, and accessible user experiences. I enjoy translating complex datasets into useful interfaces and automations.</p>
+          <ul>
+            <li class="muted">Relevant Coursework: Data Structures, Managerial Economics, Design Prototyping, Visual Analytics</li>
+            <li class="muted">Tools: JUnit, Selenium, Jasmine, Protractor, Streamlit</li>
+          </ul>
+        </div>
+        <div>
+          <div class="card">
+            <strong>Technical Skills & Certifications</strong>
+            <p class="muted" style="margin-top:8px">Microsoft Office Suite, Trello, Asana, Python — Programming: Python, Java, C — Frameworks: Angular, LangChain</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="reveal">
+      <h2>Experience</h2>
+      <div class="card">
+        <div class="exp-item">
+          <strong>Vanguard — Application Engineer Intern</strong>
+          <div class="muted">Jan 2026 – Present • Charlotte, NC</div>
+          <p>Built full‑stack Angular frontends and Java REST microservices; implemented TDD and automated tests (JUnit, Protractor, Jasmine, Selenium); integrated with CI pipelines to improve deployment reliability.</p>
+        </div>
+
+        <div class="exp-item">
+          <strong>Cisco Systems — Software Engineer I Intern</strong>
+          <div class="muted">Jun 2025 – Aug 2025 • Raleigh, NC</div>
+          <p>Built an Agentic AI platform using LangChain to process large customer datasets; used Python and Java for performance tuning and QA testing.</p>
+        </div>
+
+        <div class="exp-item">
+          <strong>BrandSymbol — Business Development Intern</strong>
+          <div class="muted">Aug 2024 – Dec 2024 • Charlotte, NC</div>
+          <p>Managed CRM across 200+ profiles, supported client pitches, and collaborated on strategy for new business development.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="reveal">
+      <h2>Projects</h2>
+      <div class="projects">
+        <div class="project card">
+          <strong>Website Enhancement Strategy for CVTC</strong>
+          <div class="muted">Jul 2025</div>
+          <p>UI/UX audits, accessibility improvements, Figma wireframes, and WordPress template recommendations to improve hierarchy and mobile responsiveness.</p>
+        </div>
+
+        <div class="project card">
+          <strong>Agentic AI Chatbot (Cisco)</strong>
+          <div class="muted">Jun 2025</div>
+          <p>Built a LangChain-based system to query large datasets via conversational UI and improved data throughput and reliability.</p>
+        </div>
+
+        <div class="project card">
+          <strong>Personal Portfolio Website</strong>
+          <div class="muted">May 2024</div>
+          <p>Responsive personal site showcasing projects, resume, and contact information using HTML, CSS, and JavaScript.</p>
+        </div>
+
+        <div class="project card">
+          <strong>IoT Arduino Device</strong>
+          <div class="muted">Jun 2020 – Aug 2021</div>
+          <p>Built a people‑counter IoT device using C/C++ and Arduino; transmitted occupancy data to a cloud API; won IoT Arduino Challenge.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="leadership" class="reveal">
+      <h2>Leadership & Honors</h2>
+      <div class="grid">
+        <div class="card">
+          <strong>Collegiate DECA — Founder & President</strong>
+          <p class="muted">Feb 2024 – Present</p>
+          <p>Grew Collegiate DECA to 50+ students, organized workshops and speaker events, and led teams to strong competitive placements.</p>
+        </div>
+        <div class="card">
+          <strong>Honors</strong>
+          <ul style="margin-top:8px">
+            <li>Top 10 — International Collegiate DECA ICDC 2025</li>
+            <li>1st — IoT Arduino Challenge</li>
+            <li>Top 10 — TSA State Competition</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="reveal">
+      <h2>Contact</h2>
+      <div class="card">
+        <p><strong>Pratik Tanikella</strong></p>
+        <p class="muted">Phone: 919-949-8817 • Email: <a href="mailto:pratiktanikella@gmail.com">pratiktanikella@gmail.com</a></p>
+        <p class="muted">LinkedIn: <a href="https://www.linkedin.com/in/pratik-tanikella/" target="_blank">linkedin.com/in/pratik-tanikella</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div>&copy; 2026 Pratik Tanikella</div>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible') })
+    },{threshold:0.12});
+    reveals.forEach(r=>io.observe(r));
+
+    // Smooth header show on scroll (subtle)
+    const nav = document.querySelector('header');
+    let last = 0;
+    window.addEventListener('scroll', ()=>{
+      const y = window.scrollY;
+      nav.style.transform = y>60? 'translateY(0)' : 'translateY(-8px)';
+      last = y;
+    });
+  </script>
+</body>
+</html>
+
+
+
+
+

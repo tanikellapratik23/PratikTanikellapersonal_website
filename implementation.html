@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Implementation — Pratik Tanikella</title>
+  <meta name="description" content="Deep dive into project implementations and technical decisions." />
+  <link rel="icon" href="brandnew23.png" type="image/png">
+  <link rel="shortcut icon" href="brandnew23.png" type="image/png">
+  <style>
+    :root{
+      --bg:#071a15;
+      --green:#0b6a48;
+      --accent:#d4b44a;
+      --muted:#cbd5cf;
+      --card:#0f1f1a;
+      --glass: rgba(255,255,255,0.04);
+      --radius:14px;
+      --maxw:1100px;
+      color-scheme: dark;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;color:var(--muted);background:var(--bg);-webkit-font-smoothing:antialiased}
+    a{color:var(--accent);text-decoration:none}
+
+    header{position:fixed;inset:0 0 auto 0;height:72px;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px);z-index:60;background:rgba(7,26,21,0.85)}
+    nav{width:100%;max-width:var(--maxw);display:flex;align-items:center;justify-content:space-between;padding:0 24px}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:44px;height:44px;border-radius:10px;overflow:hidden;box-shadow:0 6px 18px rgba(5,10,7,0.6)}
+    .logo img{width:100%;height:100%;object-fit:cover}
+    .brand h3{margin:0;color:white;font-size:1.05rem}
+    .links{display:flex;gap:18px}
+    .links a{padding:8px 12px;border-radius:10px;color:var(--muted);font-weight:600}
+    .links a:hover{background:var(--glass);color:var(--accent)}
+
+    main{max-width:var(--maxw);margin:100px auto 80px;padding:0 24px}
+    
+    .page-header{text-align:center;margin-bottom:60px}
+    .page-header h1{color:white;font-size:2.8rem;margin:0 0 12px;letter-spacing:-0.5px}
+    .page-header p{color:var(--muted);font-size:1.1rem;margin:0}
+
+    .blog-post{background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);border-radius:var(--radius);padding:40px;margin-bottom:40px;box-shadow:0 10px 30px rgba(3,6,5,0.5)}
+    .blog-post-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px}
+    .blog-post h2{color:#dff3e8;font-size:2rem;margin:0 0 10px}
+    .blog-post .meta{color:var(--accent);font-size:0.95rem;margin-bottom:30px;display:flex;gap:16px;align-items:center}
+    .toggle-btn{background:var(--green);color:white;border:none;padding:8px 16px;border-radius:8px;cursor:pointer;font-weight:600;font-size:0.9rem;transition:all 0.3s}
+    .toggle-btn:hover{filter:brightness(1.1)}
+    .content.collapsed{display:none}
+    .blog-post .content{line-height:1.8}
+    .blog-post h3{color:white;font-size:1.4rem;margin:32px 0 16px}
+    .blog-post h4{color:#dff3e8;font-size:1.1rem;margin:24px 0 12px}
+    .blog-post ul, .blog-post ol{margin:16px 0;padding-left:24px}
+    .blog-post li{margin:8px 0;line-height:1.7}
+    .blog-post code{background:rgba(255,255,255,0.08);padding:3px 8px;border-radius:6px;font-family:'Courier New',monospace;color:var(--accent);font-size:0.9em}
+    .blog-post .feature-tag{background:var(--green);color:white;padding:4px 10px;border-radius:8px;font-size:0.85rem;font-weight:600;display:inline-block;margin:4px 4px 4px 0}
+
+    .back-link{display:inline-flex;align-items:center;gap:8px;color:var(--accent);font-weight:600;margin-bottom:30px;padding:10px 16px;border-radius:10px;background:rgba(255,255,255,0.02)}
+    .back-link:hover{background:var(--glass)}
+
+    footer{padding:30px;text-align:center;color:var(--muted)}
+
+    @media(max-width:768px){
+      .page-header h1{font-size:2rem}
+      .blog-post{padding:24px}
+      .blog-post h2{font-size:1.5rem}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="brand">
+        <div class="logo"><img src="newfav.png" alt="logo"></div>
+        <div>
+          <h3>Pratik V. Tanikella</h3>
+          <div class="muted" style="font-size:0.85rem">UNC Charlotte • B.S. Computer Science</div>
+        </div>
+      </div>
+      <div class="links nav-links">
+        <a href="index.html">Home</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#experience">Experience</a>
+        <a href="index.html#projects">Projects</a>
+        <a href="implementation.html">Implementation</a>
+        <a href="index.html#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <a href="index.html" class="back-link">← Back to Home</a>
+
+    <div class="page-header">
+      <h1>Implementation Deep Dives</h1>
+      <p>Behind-the-scenes technical decisions and feature development</p>
+    </div>
+
+    <!-- VivahaPlan Project -->
+    <article class="blog-post">
+      <div class="blog-post-header">
+        <div>
+          <h2>VivahaPlan – Wedding Planning Platform</h2>
+          <div class="meta">
+            <span>Posted: Feb 5, 2026</span>
+            <span>•</span>
+            <span>TypeScript, React, Node.js, MongoDB</span>
+          </div>
+        </div>
+        <button class="toggle-btn" onclick="togglePost(this)">Close</button>
+      </div>
+      
+      <div class="content">
+        <p>VivahaPlan is a full-stack wedding planning platform designed to help couples and families manage every aspect of their wedding—from guest lists to vendor searches to pre-wedding trip planning. Here's how I built and continuously improved the platform over the past 75+ hours of development.</p>
+        
+        <p><strong>Here are the new updates and features I've added:</strong></p>
+
+        <h3>Interactive Tutorial System</h3>
+        <p>One of the biggest challenges for new users was understanding all the dashboard features. To solve this, I implemented an 11-step interactive tutorial that guides users through each section.</p>
+        <ul>
+          <li><strong>Keyboard navigation:</strong> Used event listeners to detect left/right arrow keys for step navigation and ESC to exit. Implemented with <code>useEffect</code> hooks to add and clean up event listeners properly.</li>
+          <li><strong>Progress tracking:</strong> Built a dot indicator system using array mapping and conditional styling based on current step index.</li>
+          <li><strong>Modal positioning:</strong> Centered the tutorial modal using flexbox with <code>justify-content: center</code> and <code>align-items: center</code>, added scrolling support for smaller viewports.</li>
+          <li><strong>State management:</strong> Stored tutorial state in React context to persist progress across page navigation within the dashboard.</li>
+        </ul>
+
+        <h3>Drag-and-Drop Navigation Customization</h3>
+        <p>Users wanted control over which navigation items appeared in their sidebar. I built a full drag-and-drop system with database persistence.</p>
+        <ul>
+          <li><strong>DnD Kit integration:</strong> Used <code>@dnd-kit/core</code> and <code>@dnd-kit/sortable</code> libraries to implement smooth drag interactions. Set up <code>DndContext</code> with sensors for mouse and touch.</li>
+          <li><strong>Backend API:</strong> Created <code>/api/navigation/preferences</code> endpoint that accepts PUT requests with the new navigation order. Updated MongoDB user schema to include <code>navigationPreferences</code> field as an array of objects.</li>
+          <li><strong>Visibility toggles:</strong> Implemented show/hide functionality with Eye/EyeOff icons using Lucide React. Updated state locally, then batch-saved all changes on "Save" button click.</li>
+          <li><strong>Optimistic updates:</strong> UI updates immediately on drag, with loading state during API call. Rollback mechanism if save fails.</li>
+        </ul>
+
+        <h3>Shareable Wedding Information</h3>
+        <p>Couples needed a way to share wedding details with guests without requiring them to create accounts. I built a secure token-based sharing system.</p>
+        <ul>
+          <li><strong>Token generation:</strong> Backend generates unique tokens using <code>crypto.randomBytes(32).toString('hex')</code> and stores them in a separate <code>shareTokens</code> collection with wedding ID reference.</li>
+          <li><strong>Public route:</strong> Created <code>/wedding/{token}</code> route that bypasses authentication middleware. Validates token, fetches associated wedding data, and renders public-facing page.</li>
+          <li><strong>Copy to clipboard:</strong> Used <code>navigator.clipboard.writeText()</code> API with success feedback toast. Fallback for older browsers using <code>document.execCommand('copy')</code>.</li>
+          <li><strong>Auto-update notice:</strong> Added timestamp tracking to show guests when information was last updated, queried from database using <code>updatedAt</code> field.</li>
+        </ul>
+
+        <h3>Location-Based Hotel Block Search</h3>
+        <p>Implemented a hotel search feature that uses browser geolocation to find nearby hotels with wedding discounts.</p>
+        <ul>
+          <li><strong>Geolocation API:</strong> Used <code>navigator.geolocation.getCurrentPosition()</code> to get user coordinates. Error handling for permission denials with fallback to wedding venue location.</li>
+          <li><strong>Hotel data structure:</strong> Created mock hotel data with properties: name, distance, price, originalPrice, discount, rating, amenities, phone, bookingUrl.</li>
+          <li><strong>Tel links:</strong> Implemented clickable phone numbers with <code>&lt;a href="tel:+1234567890"&gt;</code> for mobile users.</li>
+          <li><strong>External booking integration:</strong> "Book Block" buttons link to partner booking sites (Marriott, Hilton, Booking.com) with query parameters for wedding groups.</li>
+        </ul>
+
+        <h3>Bachelor/Bachelorette Trip Planning</h3>
+        <p>Enhanced the pre-wedding trip planner with transport mode switching and dynamic budget calculations.</p>
+        <ul>
+          <li><strong>Transport mode state:</strong> Used React <code>useState</code> to toggle between flight and drive modes. Conditional rendering to show/hide relevant inputs.</li>
+          <li><strong>"Flying from" input:</strong> Added origin airport selector using Autocomplete component with IATA airport codes.</li>
+          <li><strong>Budget breakdown:</strong> Hidden by default, appears only after user clicks "Generate Total Estimate". Calculates totals by mapping over selected activities and accommodations.</li>
+          <li><strong>Mode switching:</strong> "Changed your mind?" button clears current selections and switches mode with smooth transition animation.</li>
+        </ul>
+
+        <h3>Backend Architecture</h3>
+        <ul>
+          <li><strong>MongoDB models:</strong> User model with <code>navigationPreferences</code> array, Wedding model with embedded guest arrays, ShareToken model with expiration timestamps.</li>
+          <li><strong>API middleware:</strong> Authentication middleware checks JWT tokens from cookies, public route middleware bypasses auth for share links.</li>
+          <li><strong>Error handling:</strong> Centralized error handler catches async errors, returns consistent JSON responses with status codes.</li>
+          <li><strong>TypeScript typing:</strong> Strong types for all API request/response bodies, database models, and React component props.</li>
+        </ul>
+
+        <h3>UI/UX Polish</h3>
+        <ul>
+          <li>Removed cluttered "Download Backup" and file upload buttons from dashboard header for cleaner interface</li>
+          <li>Changed vendor count text to white for better visibility against gradient backgrounds</li>
+          <li>Fixed Overview page element sizing—reduced oversized headings from text-4xl to text-2xl, icons from w-16 to w-10</li>
+          <li>Added validation to Budget Tracker to prevent empty category names using <code>trim()</code> and length checks</li>
+          <li>Improved color contrast throughout with WCAG AA compliance testing</li>
+        </ul>
+      </div>
+    </article>
+
+    <!-- UNC Charlotte Collegiate DECA -->
+    <article class="blog-post">
+      <div class="blog-post-header">
+        <div>
+          <h2>UNC Charlotte Collegiate DECA Website</h2>
+          <div class="meta">
+            <span>Posted: Feb 5, 2026</span>
+            <span>•</span>
+            <span>HTML, CSS, JavaScript, LocalStorage</span>
+          </div>
+        </div>
+        <button class="toggle-btn" onclick="togglePost(this)">Close</button>
+      </div>
+      
+      <div class="content">
+        <p>Built a static website for the UNC Charlotte Collegiate DECA chapter to streamline member engagement, event information, and competition paper submissions.</p>
+        
+        <p><strong>Here are the new updates and features I've added:</strong></p>
+
+        <h3>Local Authentication System</h3>
+        <p>Implemented a client-side authentication system for member access without requiring a backend server.</p>
+        <ul>
+          <li><strong>Sign Up flow:</strong> Form collects username, email, and password. Password is hashed using Web Crypto API (<code>crypto.subtle.digest('SHA-256')</code>) before storing in <code>localStorage</code>.</li>
+          <li><strong>Login validation:</strong> Compares hashed password from input against stored hash. Session token generated and stored in <code>sessionStorage</code> for temporary authentication.</li>
+          <li><strong>Protected routes:</strong> JavaScript checks for valid session token on page load. Redirects to login page if not authenticated using <code>window.location.href</code>.</li>
+          <li><strong>Security considerations:</strong> While localStorage isn't ideal for production, it works for this use case with low sensitivity data. Implemented automatic logout after 2 hours of inactivity.</li>
+        </ul>
+
+        <h3>Paper Submission System</h3>
+        <p>Created a local submission tracker for ICDC competition papers using browser storage.</p>
+        <ul>
+          <li><strong>Submission form:</strong> Fields for paper title, category, team members, and submission date. File names stored as strings (actual files not uploaded to maintain simplicity).</li>
+          <li><strong>Data persistence:</strong> All submissions stored as JSON array in <code>localStorage</code> under key <code>deca_submissions</code>. CRUD operations update this array.</li>
+          <li><strong>View submissions:</strong> Dynamic table rendering from localStorage data using <code>Array.map()</code> to create table rows. Filter by category and date range.</li>
+          <li><strong>Edit/Delete:</strong> Each submission has unique ID (timestamp-based). Edit opens modal with pre-filled form, delete shows confirmation dialog.</li>
+        </ul>
+
+        <h3>Announcements & Funding Updates</h3>
+        <p>Built an announcements section for chapter updates, especially funding and event information.</p>
+        <ul>
+          <li><strong>Admin panel:</strong> Simple admin login (hardcoded credentials) to post announcements. Used separate localStorage key <code>deca_announcements</code>.</li>
+          <li><strong>Rich formatting:</strong> Textarea with basic markdown support—converts <code>**bold**</code> to <code>&lt;strong&gt;</code>, <code>*italic*</code> to <code>&lt;em&gt;</code> on display.</li>
+          <li><strong>Priority tagging:</strong> Announcements tagged as "High Priority" appear at top with gold accent border and icon.</li>
+          <li><strong>Funding tracker:</strong> Special announcement type that displays funding goal progress bar calculated from submitted expenses vs. budget.</li>
+        </ul>
+
+        <h3>Design System</h3>
+        <ul>
+          <li>DECA brand colors: Blue (#0066CC) primary, Gold (#FFC72C) accents</li>
+          <li>Responsive grid layout using CSS Grid and Flexbox for mobile-first design</li>
+          <li>Smooth transitions on all interactive elements using <code>transition: all 0.3s ease</code></li>
+          <li>Accessible forms with proper label associations and ARIA attributes</li>
+        </ul>
+      </div>
+    </article>
+
+    <!-- Personal Portfolio Website -->
+    <article class="blog-post">
+      <div class="blog-post-header">
+        <div>
+          <h2>Personal Portfolio Website</h2>
+          <div class="meta">
+            <span>Posted: Feb 5, 2026</span>
+            <span>•</span>
+            <span>HTML, CSS, JavaScript</span>
+          </div>
+        </div>
+        <button class="toggle-btn" onclick="togglePost(this)">Close</button>
+      </div>
+      
+      <div class="content">
+        <p>My personal portfolio site showcasing projects, experience, and skills. Recently updated with new features and this Implementation section.</p>
+        
+        <p><strong>Here are the new updates and features I've added:</strong></p>
+
+        <h3>Adding the VivahaPlan Project</h3>
+        <p>Process of adding a new project card to the portfolio:</p>
+        <ul>
+          <li><strong>Content preparation:</strong> Condensed LinkedIn project description to match existing project card lengths (2-3 sentences max).</li>
+          <li><strong>HTML structure:</strong> Created new <code>.project.card</code> div with consistent structure: title (strong tag), date (muted div), description (p tag).</li>
+          <li><strong>Positioning:</strong> Placed at the beginning of <code>.projects</code> grid to appear first. Used CSS Grid's <code>auto-fit</code> to maintain responsive layout.</li>
+          <li><strong>Link integration:</strong> Added "Vivaha" button to hero section's CTA row using existing <code>.chip</code> class for style consistency.</li>
+        </ul>
+
+        <h3>Implementation Blog Section</h3>
+        <p>Built this dedicated page to showcase technical depth beyond resume bullet points.</p>
+        <ul>
+          <li><strong>Navigation update:</strong> Added "Implementation" link to main navigation bar in <code>index.html</code>, maintaining consistent spacing and hover effects.</li>
+          <li><strong>Separate HTML file:</strong> Created <code>implementation.html</code> as standalone page rather than section in main page for better organization and loading performance.</li>
+          <li><strong>Shared design system:</strong> Copied CSS variables and base styles from <code>index.html</code> to maintain visual consistency across pages.</li>
+          <li><strong>Blog-style layout:</strong> Structured content as article elements with headers, metadata, and content sections. Used semantic HTML for better SEO.</li>
+          <li><strong>Code formatting:</strong> Added custom <code>&lt;code&gt;</code> tag styling with background color and padding for inline code references.</li>
+        </ul>
+
+        <h3>Design Philosophy</h3>
+        <ul>
+          <li>Dark green theme to stand out from typical blue/black portfolios</li>
+          <li>Gold accents for calls-to-action to create visual hierarchy</li>
+          <li>Glassmorphism effects with subtle backdrop blur and transparency</li>
+          <li>Scroll reveal animations using Intersection Observer API for modern feel</li>
+          <li>Mobile-first responsive design with breakpoints at 980px and 520px</li>
+        </ul>
+
+        <h3>Performance Optimizations</h3>
+        <ul>
+          <li>Single-page architecture for main portfolio reduces load times</li>
+          <li>Minimal external dependencies—only using system fonts, no web fonts</li>
+          <li>Lazy loading for images with <code>loading="lazy"</code> attribute</li>
+          <li>Smooth scroll behavior with <code>scroll-behavior: smooth</code> in CSS</li>
+        </ul>
+      </div>
+    </article>
+
+  </main>
+
+  <footer>
+    <div>&copy; 2026 Pratik Tanikella</div>
+  </footer>
+
+  <script>
+    function togglePost(button) {
+      const post = button.closest('.blog-post');
+      const content = post.querySelector('.content');
+      
+      if (content.classList.contains('collapsed')) {
+        content.classList.remove('collapsed');
+        button.textContent = 'Close';
+      } else {
+        content.classList.add('collapsed');
+        button.textContent = 'Read More';
+      }
+    }
+  </script></body>
+</html>

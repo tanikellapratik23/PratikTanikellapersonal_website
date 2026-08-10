@@ -1,268 +1,124 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Pratik Tanikella — Portfolio</title>
-  <meta name="description" content="Pratik Tanikella — UNC Charlotte student, software engineer, and designer." />
-  <link rel="icon" href="brandnew23.png" type="image/png">
-  <link rel="shortcut icon" href="brandnew23.png" type="image/png">
-  <style>
-    :root{
-      --bg:#071a15; /* deep green-black */
-      --green:#0b6a48; /* primary dark green */
-      --accent:#d4b44a; /* warm gold accent */
-      --muted:#cbd5cf;
-      --card:#0f1f1a;
-      --glass: rgba(255,255,255,0.04);
-      --radius:14px;
-      --maxw:1100px;
-      color-scheme: dark;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;color:var(--muted);background:var(--bg);-webkit-font-smoothing:antialiased}
-    a{color:var(--accent);text-decoration:none}
-
-    /* Top nav */
-    header{position:fixed;inset:0 0 auto 0;height:72px;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px);z-index:60}
-    nav{width:100%;max-width:var(--maxw);display:flex;align-items:center;justify-content:space-between;padding:0 24px}
-    .brand{display:flex;gap:12px;align-items:center}
-    .logo{width:44px;height:44px;border-radius:10px;overflow:hidden;box-shadow:0 6px 18px rgba(5,10,7,0.6)}
-    .logo img{width:100%;height:100%;object-fit:cover}
-    .brand h3{margin:0;color:white;font-size:1.05rem}
-    .links{display:flex;gap:18px}
-    .links a{padding:8px 12px;border-radius:10px;color:var(--muted);font-weight:600}
-    .links a:hover{background:var(--glass);color:var(--accent)}
-
-    /* HERO */
-    .hero{min-height:86vh;display:grid;place-items:center;padding:100px 20px 60px}
-    .hero-inner{max-width:var(--maxw);width:100%;display:grid;grid-template-columns:1fr 300px;gap:36px;align-items:center}
-    .intro{padding:40px;background:linear-gradient(180deg, rgba(11,106,72,0.06), transparent);border-radius:var(--radius);box-shadow:0 10px 40px rgba(3,6,5,0.6)}
-    h1{color:white;font-size:2.6rem;margin:0 0 10px;letter-spacing:-0.5px}
-    .subtitle{color:var(--muted);margin:0 0 18px}
-    .contact{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
-    .chip{background:transparent;border:1px solid rgba(255,255,255,0.04);padding:10px 14px;border-radius:12px;color:var(--muted);font-weight:600}
-    .cta{display:inline-flex;align-items:center;gap:10px;background:var(--green);color:white;padding:12px 16px;border-radius:12px;border:none;font-weight:700;cursor:pointer}
-    .cta:hover{filter:brightness(1.05)}
-
-    /* right panel image */
-    .hero-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:16px;box-shadow:0 18px 40px rgba(3,6,5,0.6);display:flex;flex-direction:column;gap:12px}
-    .hero-card img{width:100%;height:320px;object-fit:cover;object-position:center 10%;border-radius:10px}
-    .roles{display:flex;gap:10px;flex-wrap:wrap}
-    .role{background:rgba(255,255,255,0.03);padding:8px 10px;border-radius:10px;font-size:0.9rem}
-
-    /* sections */
-    main{max-width:var(--maxw);margin:0 auto;padding:40px 20px 80px}
-    section{margin:28px 0;padding:26px;background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);border-radius:12px}
-    h2{color:#dff3e8;margin:0 0 14px;font-size:1.25rem}
-    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
-    .card{background:var(--card);padding:18px;border-radius:12px;box-shadow:inset 0 1px 0 rgba(255,255,255,0.02)}
-
-    /* timeline / experience */
-    .exp-item{border-left:3px solid var(--green);padding-left:14px;margin-bottom:16px}
-    .muted{color:var(--muted);font-size:0.95rem}
-
-    /* projects */
-    .projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
-    .project{padding:14px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.015), transparent);transition:transform .28s, box-shadow .28s}
-    .project:hover{transform:translateY(-8px);box-shadow:0 18px 40px rgba(2,4,3,0.6)}
-
-    footer{padding:30px;text-align:center;color:var(--muted)}
-
-    /* animations */
-    .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease, transform .6s ease}
-    .reveal.visible{opacity:1;transform:none}
-
-    @media(max-width:980px){.hero-inner{grid-template-columns:1fr}.grid{grid-template-columns:1fr}.hero-card img{height:220px}}
-    @media(max-width:520px){h1{font-size:1.8rem}.nav-links{display:none}}
-  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Pratik Tanikella builds applied AI systems and thoughtful digital products across fintech, higher education, and community platforms.">
+  <meta name="theme-color" content="#071b15">
+  <title>Pratik Tanikella | Applied AI & Software Engineer</title>
+  <link rel="icon" href="newfav.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header>
-    <nav>
-      <div class="brand">
-        <div class="logo"><img src="newfav.png" alt="logo"></div>
-        <div>
-          <h3>Pratik V. Tanikella</h3>
-          <div class="muted">UNC Charlotte • B.S. Computer Science</div>
-        </div>
-      </div>
-      <div class="links nav-links">
-        <a href="#about">About</a>
-        <a href="#experience">Experience</a>
-        <a href="#projects">Projects</a>
-        <a href="implementation.html">Implementation</a>
-        <a href="#contact">Contact</a>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <nav class="nav shell" aria-label="Primary navigation">
+      <a class="brand" href="#top" aria-label="Pratik Tanikella, home"><span class="brand-mark">PT</span><span>Pratik Tanikella</span></a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
+      <div class="nav-links" id="nav-links">
+        <a href="#work">Work</a><a href="#experience">Experience</a><a href="#research">Research</a><a href="#about">About</a>
+        <a class="nav-cta" href="mailto:pratiktanikella@gmail.com">Let's talk <span aria-hidden="true">↗</span></a>
       </div>
     </nav>
   </header>
 
-  <div class="hero">
-    <div class="hero-inner">
-      <div class="intro reveal">
-        <h1>Pratik Tanikella</h1>
-        <p class="subtitle">Aspiring Software Engineer</p>
-
-        <div class="contact">
-          <div class="chip"><a href="mailto:pratiktanikella@gmail.com">pratiktanikella@gmail.com</a></div>
-          <div class="chip"><a href="https://www.linkedin.com/in/pratik-tanikella/" target="_blank">linkedin.com/in/pratik-tanikella</a></div>
+  <main id="main">
+    <section class="hero shell" id="top">
+      <div class="hero-copy reveal">
+        <p class="eyebrow"><span class="status-dot"></span> Building at the intersection of AI + real-world systems</p>
+        <h1>I turn ambitious ideas into <span>products people can use.</span></h1>
+        <p class="lede">Computer Science and Economics student at UNC Charlotte building applied AI, full-stack platforms, and useful digital experiences—from secure financial workflows to higher-education research.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#work">Explore selected work <span>↓</span></a>
+          <a class="button ghost" href="https://github.com/tanikellapratik23" target="_blank" rel="noreferrer">GitHub <span>↗</span></a>
+          <a class="button ghost" href="https://www.linkedin.com/in/pratik-tanikella/" target="_blank" rel="noreferrer">LinkedIn <span>↗</span></a>
         </div>
-
-        <div style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap">
-            <button class="cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get in touch</button>
-            <a class="chip" href="#projects">View projects</a>
-            <a class="chip" href="https://github.com/tanikellapratik23" target="_blank">GitHub</a>
-            <a class="chip" href="https://vivahaplan.com/" target="_blank">Vivaha</a>
-          </div>
-
-        <div style="margin-top:20px" class="muted">Expected Graduation: 2026 • Programming: Python, Java, C • Frameworks: Angular, LangChain</div>
+        <div class="hero-proof" aria-label="Current focus">
+          <div><strong>Vanguard</strong><span>Application Engineering</span></div>
+          <div><strong>UNC Charlotte</strong><span>AI Research + Teaching</span></div>
+          <div><strong>Class of '26</strong><span>Computer Science</span></div>
+        </div>
       </div>
-
-      <aside class="hero-card reveal">
-        <img src="img1.jpeg" alt="hero image">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px">
-          <div class="roles">
-            <div class="role">Application Engineer Intern at Vanguard</div>
-            <div class="role">Agentic AI, Python, and AWS</div>
-          </div>
-        </div>
+      <aside class="portrait-card reveal">
+        <div class="portrait-wrap"><img src="img1.jpeg" alt="Pratik Tanikella"></div>
+        <div class="portrait-caption"><span>Based in Charlotte, NC</span><strong>Engineer · Researcher · Builder</strong></div>
+        <span class="orbit orbit-one">Python</span><span class="orbit orbit-two">RAG</span><span class="orbit orbit-three">AWS</span>
       </aside>
-    </div>
-  </div>
+    </section>
 
-  <main>
-    <section id="about" class="reveal">
-      <h2>About</h2>
-      <div class="grid">
-        <div>
-          <p>I’m a UNC Charlotte student studying Computer Science with a strong interest in building full‑stack applications, AI integrations, and accessible user experiences. I enjoy translating complex datasets into useful interfaces and automations.</p>
-          <ul>
-            <li class="muted">Relevant Coursework: Data Structures, Managerial Economics, Design Prototyping, Visual Analytics</li>
-            <li class="muted">Tools: JUnit, Selenium, Jasmine, Protractor, Streamlit</li>
-          </ul>
+    <section class="marquee" aria-label="Core skills"><div>AGENTIC AI <span>✦</span> FULL-STACK ENGINEERING <span>✦</span> RAG SYSTEMS <span>✦</span> PRODUCT THINKING <span>✦</span> CLOUD SERVICES <span>✦</span> HUMAN-CENTERED DESIGN</div></section>
+
+    <section class="section shell" id="work">
+      <div class="section-heading reveal"><div><p class="kicker">01 / Selected work</p><h2>Proof, not promises.</h2></div><p>Three projects that show how I research, design, build, and ship—from the first system diagram to the live experience.</p></div>
+
+      <article class="case-study case-vivaha reveal">
+        <div class="case-copy">
+          <div class="case-meta"><span>01</span><span>Founder project · Full-stack product</span></div>
+          <p class="project-label">VIVAHA</p><h3>Wedding planning that makes room for every tradition.</h3>
+          <p>Vivaha brings guests, budgets, vendors, ceremonies, and trip planning into one calm workspace—built especially for modern and interfaith weddings.</p>
+          <div class="impact-row"><div><strong>11-step</strong><span>guided product tour</span></div><div><strong>One hub</strong><span>for the full wedding journey</span></div></div>
+          <ul class="feature-list"><li>Personalized onboarding and dashboard</li><li>AI-assisted planning and local vendor discovery</li><li>Shareable guest information and event timelines</li></ul>
+          <div class="tag-row"><span>React</span><span>TypeScript</span><span>Node.js</span><span>MongoDB</span></div>
+          <div class="case-actions"><a href="https://vivahaplan.com/" target="_blank" rel="noreferrer">Explore the live product ↗</a><button class="text-button" data-open-modal="vivaha">See how it works →</button></div>
         </div>
-        <div>
-          <div class="card">
-            <strong>Technical Skills & Certifications</strong>
-            <p class="muted" style="margin-top:8px">Microsoft Office Suite, Trello, Asana, Python — Programming: Python, Java, C — Frameworks: Angular, LangChain</p>
+        <a class="browser-frame" href="https://vivahaplan.com/" target="_blank" rel="noreferrer" aria-label="Open Vivaha live website">
+          <div class="browser-bar"><i></i><i></i><i></i><span>vivahaplan.com</span><b>↗</b></div><img src="assets/vivaha-preview.png" alt="Vivaha wedding planning product landing page"><div class="float-note"><strong>Built for real celebrations</strong><span>Product strategy · UX · Engineering</span></div>
+        </a>
+      </article>
+
+      <article class="case-study reverse case-heair reveal" id="research">
+        <div class="case-copy">
+          <div class="case-meta"><span>02</span><span>Undergraduate research · Applied AI</span></div>
+          <p class="project-label">HEAIR READINESS PLATFORM</p><h3>From an assessment score to a practical AI roadmap.</h3>
+          <p>A role-adaptive readiness platform for higher education, developed through UNC Charlotte research and the CRA UR2PhD program under Dr. Sri Yash Tadimalla.</p>
+          <div class="impact-row"><div><strong>60</strong><span>role-specific questions</span></div><div><strong>5</strong><span>stakeholder perspectives</span></div><div><strong>4</strong><span>readiness dimensions</span></div></div>
+          <ul class="feature-list"><li>Role-aware assessment logic and scoring</li><li>RAG-grounded, personalized AI coaching</li><li>Secure results, storage, and visualization pipeline</li></ul>
+          <div class="tag-row"><span>Python</span><span>RAG</span><span>LLM APIs</span><span>PostgreSQL</span></div>
+          <div class="case-actions"><a href="https://tanikellapratik23.github.io/heair-readiness-platform/docs/" target="_blank" rel="noreferrer">Try the assessment ↗</a><a href="https://github.com/tanikellapratik23/heair-readiness-platform" target="_blank" rel="noreferrer">View repository ↗</a></div>
+        </div>
+        <div class="visual-stack"><a class="browser-frame" href="https://tanikellapratik23.github.io/heair-readiness-platform/docs/" target="_blank" rel="noreferrer"><div class="browser-bar"><i></i><i></i><i></i><span>HEAIR readiness assessment</span><b>↗</b></div><img src="assets/heair-preview.png" alt="HEAIR Readiness Platform assessment landing page"></a><button class="diagram-peek" data-open-modal="heair"><img src="assets/heair-system-design.png" alt="HEAIR platform system design diagram"><span>Open the system architecture →</span></button></div>
+      </article>
+
+      <article class="case-study case-deca reveal">
+        <div class="case-copy">
+          <div class="case-meta"><span>03</span><span>Community platform · Leadership</span></div>
+          <p class="project-label">UNC CHARLOTTE COLLEGIATE DECA</p><h3>A digital home for a chapter I built from the ground up.</h3>
+          <p>I co-founded UNC Charlotte Collegiate DECA, grew it into an active student community, and built the public platform that turns curiosity into membership and competition readiness.</p>
+          <div class="impact-row"><div><strong>100+</strong><span>active members</span></div><div><strong>70%</strong><span>of first team placed Top 10 internationally</span></div></div>
+          <ul class="feature-list"><li>Multi-page recruitment and event experience</li><li>ICDC travel guides, recaps, and chapter roadmap</li><li>Responsive visual system and member pathways</li></ul>
+          <div class="tag-row"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Product leadership</span></div>
+          <div class="case-actions"><a href="https://uncccollegiatedeca.com/" target="_blank" rel="noreferrer">Visit the chapter site ↗</a><a href="https://github.com/tanikellapratik23/uncccollegiatedecawebiste" target="_blank" rel="noreferrer">View code ↗</a></div>
+        </div>
+        <div class="deca-visual"><a class="browser-frame" href="https://uncccollegiatedeca.com/" target="_blank" rel="noreferrer"><div class="browser-bar"><i></i><i></i><i></i><span>uncccollegiatedeca.com</span><b>↗</b></div><img src="assets/deca-preview.png" alt="UNC Charlotte Collegiate DECA website"></a><img class="team-photo" src="assets/deca-team.png" alt="UNC Charlotte Collegiate DECA members at competition"></div>
+      </article>
+    </section>
+
+    <section class="section experience-section" id="experience">
+      <div class="shell"><div class="section-heading reveal"><div><p class="kicker">02 / Experience</p><h2>Building in high-stakes environments.</h2></div><p>Engineering depth, research rigor, and the ability to explain complex technology clearly.</p></div>
+        <div class="experience-grid">
+          <article class="experience-feature reveal"><div class="company-mark">V</div><div><p class="eyebrow">JAN–JUL 2026 · CHARLOTTE</p><h3>Application Engineer Intern</h3><h4>Vanguard</h4><p>Built scalable full-stack and cloud services for financial workflows, pairing Angular interfaces with Python REST microservices and secure API design.</p><div class="tag-row"><span>Angular</span><span>Python</span><span>AWS</span><span>Bedrock</span></div></div><span class="experience-number">01</span></article>
+          <div class="experience-list reveal">
+            <article><span>02</span><div><p>JUN–AUG 2025</p><h3>Software Engineer Intern · Cisco</h3><p>Built an agentic AI platform with LangChain for real telemetry queries and integrated backend services across cloud, embedded, and security teams.</p></div></article>
+            <article><span>03</span><div><p>JUN 2026–PRESENT</p><h3>Undergraduate Research Assistant · UNC Charlotte</h3><p>Developing the HEAIR framework into a working assessment, scoring, and AI coaching platform through the CRA UR2PhD program.</p></div></article>
+            <article><span>04</span><div><p>UNC CHARLOTTE</p><h3>Preceptor · AI Literacy for Professional Success</h3><p>Support students in understanding AI tools, ethical use, and workplace adoption through discussion, practical scenarios, and guided application.</p></div></article>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="experience" class="reveal">
-      <h2>Experience</h2>
-      <div class="card">
-        <div class="exp-item">
-          <strong>Vanguard — Application Engineer Intern</strong>
-          <div class="muted">Jan 2026 – Present • Charlotte, NC</div>
-          <p>Built full‑stack Angular frontends and Java REST microservices; implemented TDD and automated tests (JUnit, Protractor, Jasmine, Selenium); integrated with CI pipelines to improve deployment reliability.</p>
-        </div>
-
-        <div class="exp-item">
-          <strong>Cisco Systems — Software Engineer I Intern</strong>
-          <div class="muted">Jun 2025 – Aug 2025 • Raleigh, NC</div>
-          <p>Built an Agentic AI platform using LangChain to process large customer datasets; used Python and Java for performance tuning and QA testing.</p>
-        </div>
-
-        <div class="exp-item">
-          <strong>BrandSymbol — Business Development Intern</strong>
-          <div class="muted">Aug 2024 – Dec 2024 • Charlotte, NC</div>
-          <p>Managed CRM across 200+ profiles, supported client pitches, and collaborated on strategy for new business development.</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="projects" class="reveal">
-      <h2>Projects</h2>
-      <div class="projects">
-        <div class="project card">
-          <strong>VivahaPlan – Wedding Planning Platform</strong>
-          <div class="muted">Feb 2026</div>
-          <p>Built a web platform to simplify wedding planning with custom logins, guest management dashboards, and vendor search. Integrated itinerary, accommodation, and expense tracking using TypeScript, HTML, CSS, and JavaScript.</p>
-        </div>
-
-        <div class="project card">
-          <strong>Website Enhancement Strategy for CVTC</strong>
-          <div class="muted">Jul 2025</div>
-          <p>UI/UX audits, accessibility improvements, Figma wireframes, and WordPress template recommendations to improve hierarchy and mobile responsiveness.</p>
-        </div>
-
-        <div class="project card">
-          <strong>Agentic AI Chatbot (Cisco)</strong>
-          <div class="muted">Jun 2025</div>
-          <p>Built a LangChain-based system to query large datasets via conversational UI and improved data throughput and reliability.</p>
-        </div>
-
-        <div class="project card">
-          <strong>Collegiate DECA Website</strong>
-          <div class="muted">Jan 2026</div>
-          <p>Developed a static website to showcase the UNC Charlotte Collegiate DECA chapter, provide ICDC event details, and manage member engagement. </p>
-        </div>
-
-        <div class="project card">
-          <strong>Personal Portfolio Website</strong>
-          <div class="muted">May 2024</div>
-          <p>Responsive personal site showcasing projects, resume, and contact information using HTML, CSS, and JavaScript.</p>
-        </div>
-
-        <div class="project card">
-          <strong>IoT Arduino Device</strong>
-          <div class="muted">Jun 2020 – Aug 2021</div>
-          <p>Built a people‑counter IoT device using C/C++ and Arduino; transmitted occupancy data to a cloud API; won IoT Arduino Challenge.</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="leadership" class="reveal">
-      <h2>Leadership & Honors</h2>
-      <div class="grid">
-        <div class="card">
-          <strong>Collegiate DECA — Founder & President</strong>
-          <p class="muted">Feb 2024 – Present</p>
-          <p>Grew Collegiate DECA to 50+ students, organized workshops and speaker events, and led teams to strong competitive placements.</p>
-        </div>
-        <div class="card">
-          <strong>Honors</strong>
-          <ul style="margin-top:8px">
-            <li>Top 10 — International Collegiate DECA ICDC 2025</li>
-            <li>1st — IoT Arduino Challenge</li>
-            <li>Top 10 — TSA State Competition</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact" class="reveal">
-      <h2>Contact</h2>
-      <div class="card">
-        <p><strong>Pratik Tanikella</strong></p>
-        <p class="muted">Phone: 919-949-8817 • Email: <a href="mailto:pratiktanikella@gmail.com">pratiktanikella@gmail.com</a></p>
-        <p class="muted">LinkedIn: <a href="https://www.linkedin.com/in/pratik-tanikella/" target="_blank">linkedin.com/in/pratik-tanikella</a></p>
-      </div>
+    <section class="section shell about" id="about">
+      <div class="about-copy reveal"><p class="kicker">03 / Beyond the code</p><h2>I care about the system—and the person using it.</h2><p>My strongest work lives between disciplines. Computer science gives me the tools to build; economics helps me reason about incentives and tradeoffs; teaching and leadership keep the human outcome in view.</p><p>At UNC Charlotte, I’ve served as a student ambassador, founded Collegiate DECA, conducted applied AI research, and helped students build practical AI literacy.</p><a class="button primary" href="mailto:pratiktanikella@gmail.com">Start a conversation ↗</a></div>
+      <div class="about-cards reveal"><div><span>Education</span><strong>B.S. Computer Science</strong><p>UNC Charlotte · Dec 2026</p></div><div><span>Core toolkit</span><strong>Python · Java · Angular</strong><p>RAG · LangChain · AWS · REST APIs</p></div><div><span>Recognition</span><strong>International DECA finalist</strong><p>PCEP Certified Python Programmer</p></div><div><span>Languages</span><strong>English · Telugu · Spanish</strong><p>Professional, bilingual, and working proficiency</p></div></div>
     </section>
   </main>
 
-  <footer>
-    <div>&copy; 2026 Pratik Tanikella</div>
-  </footer>
+  <footer><div class="shell footer-inner"><div><p class="kicker">LET'S BUILD SOMETHING USEFUL</p><h2>Have a hard problem?</h2><a href="mailto:pratiktanikella@gmail.com">pratiktanikella@gmail.com ↗</a></div><div class="footer-links"><a href="https://github.com/tanikellapratik23" target="_blank" rel="noreferrer">GitHub</a><a href="https://www.linkedin.com/in/pratik-tanikella/" target="_blank" rel="noreferrer">LinkedIn</a><a href="#top">Back to top ↑</a><span>© <span id="year"></span> Pratik Tanikella</span></div></div></footer>
 
-  <script>
-    // Scroll reveal
-    const reveals = document.querySelectorAll('.reveal');
-    const io = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible') })
-    },{threshold:0.12});
-    reveals.forEach(r=>io.observe(r));
-
-    // Smooth header show on scroll (subtle)
-    const nav = document.querySelector('header');
-    let last = 0;
-    window.addEventListener('scroll', ()=>{
-      const y = window.scrollY;
-      nav.style.transform = y>60? 'translateY(0)' : 'translateY(-8px)';
-      last = y;
-    });
-  </script>
+  <dialog class="project-modal" id="vivaha-modal"><button class="modal-close" type="button" aria-label="Close">×</button><p class="kicker">PRODUCT WALKTHROUGH</p><h2>How Vivaha moves from questions to a plan.</h2><div class="walkthrough"><div><span>01</span><strong>Understand the celebration</strong><p>Role, date, location, traditions, guest count, style, and budget shape the experience.</p></div><div><span>02</span><strong>Create a living dashboard</strong><p>One workspace organizes the ceremony timeline, guests, budget, vendors, and trips.</p></div><div><span>03</span><strong>Guide the next decision</strong><p>Vivaha AI uses the couple's context to suggest practical next steps instead of generic advice.</p></div><div><span>04</span><strong>Keep everyone aligned</strong><p>Shareable wedding information stays current while plans change.</p></div></div><a class="button primary" href="https://vivahaplan.com/" target="_blank" rel="noreferrer">Open Vivaha ↗</a></dialog>
+  <dialog class="project-modal architecture-modal" id="heair-modal"><button class="modal-close" type="button" aria-label="Close">×</button><p class="kicker">SYSTEM ARCHITECTURE</p><h2>Research framework, engineered into a working loop.</h2><img src="assets/heair-system-design.png" alt="HEAIR platform system architecture"><p>The platform connects role-specific assessment data to deterministic scoring, secure storage, RAG-backed research context, and LLM-generated coaching—so every recommendation stays grounded in the HEAIR framework.</p></dialog>
+  <script src="script.js"></script>
 </body>
 </html>

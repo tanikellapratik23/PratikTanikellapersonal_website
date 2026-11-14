@@ -55,9 +55,22 @@
     <section class="section shell" id="work">
       <div class="section-heading compact-heading reveal"><div><p class="kicker">01 / Selected work</p><h2>Selected Projects</h2></div><p>Three projects that show how I research, design, build, and ship from the first system diagram to the live experience.</p></div>
 
+      <article class="case-study reverse case-heair reveal" id="research">
+        <div class="case-copy">
+          <div class="case-meta"><span>01</span><span>Undergraduate research · Applied AI</span></div>
+          <p class="project-label">HEAIR READINESS PLATFORM</p><h3>From an assessment score to a practical AI roadmap.</h3>
+          <p>A role adaptive readiness platform for higher education, developed through UNC Charlotte research and the CRA UR2PhD program under Dr. Sri Yash Tadimalla.</p>
+          <div class="impact-row"><div><strong>60</strong><span>role specific questions</span></div><div><strong>5</strong><span>stakeholder perspectives</span></div><div><strong>4</strong><span>readiness dimensions</span></div></div>
+          <ul class="feature-list"><li>Role aware assessment logic and scoring</li><li>RAG grounded, personalized AI coaching</li><li>Secure results, storage, and visualization pipeline</li></ul>
+          <div class="tag-row"><span>TypeScript</span><span>Fastify</span><span>RAG</span><span>PostgreSQL</span><span>ORION</span></div>
+          <div class="case-actions"><a href="https://tanikellapratik23.github.io/heair-readiness-platform/docs/" target="_blank" rel="noreferrer">Try the assessment ↗</a><button class="text-button" data-open-modal="heair">Explore the backend →</button><a href="https://github.com/tanikellapratik23/heair-readiness-platform" target="_blank" rel="noreferrer">View repository ↗</a></div>
+        </div>
+        <div class="visual-stack"><a class="browser-frame" href="https://tanikellapratik23.github.io/heair-readiness-platform/docs/" target="_blank" rel="noreferrer"><div class="browser-bar"><i></i><i></i><i></i><span>HEAIR readiness assessment</span><b>↗</b></div><img src="assets/heair-preview.png" alt="HEAIR Readiness Platform assessment landing page"></a><button class="diagram-peek" data-open-modal="heair"><img src="assets/heair-system-design.png" alt="HEAIR platform system design diagram"><span>Explore the backend architecture →</span></button></div>
+      </article>
+
       <article class="case-study case-vivaha reveal">
         <div class="case-copy">
-          <div class="case-meta"><span>01</span><span>Founder project · Full stack product</span></div>
+          <div class="case-meta"><span>02</span><span>Founder project · Full stack product</span></div>
           <p class="project-label">VIVAHA</p><h3>Wedding planning that makes room for every tradition.</h3>
           <p>Vivaha brings guests, budgets, vendors, ceremonies, and trip planning into one calm workspace built especially for modern and interfaith weddings.</p>
           <div class="impact-row"><div><strong>11 step</strong><span>guided product tour</span></div><div><strong>One hub</strong><span>for the full wedding journey</span></div></div>
@@ -68,19 +81,6 @@
         <a class="browser-frame" href="https://vivahaplan.com/" target="_blank" rel="noreferrer" aria-label="Open Vivaha live website">
           <div class="browser-bar"><i></i><i></i><i></i><span>vivahaplan.com</span><b>↗</b></div><img src="assets/vivaha-preview.png" alt="Vivaha wedding planning product landing page"><div class="float-note"><strong>Built for real celebrations</strong><span>Product strategy · UX · Engineering</span></div>
         </a>
-      </article>
-
-      <article class="case-study reverse case-heair reveal" id="research">
-        <div class="case-copy">
-          <div class="case-meta"><span>02</span><span>Undergraduate research · Applied AI</span></div>
-          <p class="project-label">HEAIR READINESS PLATFORM</p><h3>From an assessment score to a practical AI roadmap.</h3>
-          <p>A role adaptive readiness platform for higher education, developed through UNC Charlotte research and the CRA UR2PhD program under Dr. Sri Yash Tadimalla.</p>
-          <div class="impact-row"><div><strong>60</strong><span>role specific questions</span></div><div><strong>5</strong><span>stakeholder perspectives</span></div><div><strong>4</strong><span>readiness dimensions</span></div></div>
-          <ul class="feature-list"><li>Role aware assessment logic and scoring</li><li>RAG grounded, personalized AI coaching</li><li>Secure results, storage, and visualization pipeline</li></ul>
-          <div class="tag-row"><span>Python</span><span>RAG</span><span>LLM APIs</span><span>PostgreSQL</span></div>
-          <div class="case-actions"><a href="https://tanikellapratik23.github.io/heair-readiness-platform/docs/" target="_blank" rel="noreferrer">Try the assessment ↗</a><a href="https://github.com/tanikellapratik23/heair-readiness-platform" target="_blank" rel="noreferrer">View repository ↗</a></div>
-        </div>
-        <div class="visual-stack"><a class="browser-frame" href="https://tanikellapratik23.github.io/heair-readiness-platform/docs/" target="_blank" rel="noreferrer"><div class="browser-bar"><i></i><i></i><i></i><span>HEAIR readiness assessment</span><b>↗</b></div><img src="assets/heair-preview.png" alt="HEAIR Readiness Platform assessment landing page"></a><button class="diagram-peek" data-open-modal="heair"><img src="assets/heair-system-design.png" alt="HEAIR platform system design diagram"><span>Open the system architecture →</span></button></div>
       </article>
 
       <article class="case-study case-deca reveal">
@@ -154,7 +154,30 @@
   <footer><div class="shell footer-inner"><div><p class="kicker">CONTACT</p><a class="footer-email" href="mailto:pratiktanikella@gmail.com">pratiktanikella@gmail.com ↗</a></div><div class="footer-links"><a href="https://github.com/tanikellapratik23" target="_blank" rel="noreferrer">GitHub</a><a href="https://www.linkedin.com/in/pratik-tanikella/" target="_blank" rel="noreferrer">LinkedIn</a><a href="#top">Back to top ↑</a><span>© <span id="year"></span> Pratik Tanikella</span></div></div></footer>
 
   <dialog class="project-modal" id="vivaha-modal"><button class="modal-close" type="button" aria-label="Close">×</button><p class="kicker">PRODUCT WALKTHROUGH</p><h2>How Vivaha moves from questions to a plan.</h2><div class="walkthrough"><div><span>01</span><strong>Understand the celebration</strong><p>Role, date, location, traditions, guest count, style, and budget shape the experience.</p></div><div><span>02</span><strong>Create a living dashboard</strong><p>One workspace organizes the ceremony timeline, guests, budget, vendors, and trips.</p></div><div><span>03</span><strong>Guide the next decision</strong><p>Vivaha AI uses the couple's context to suggest practical next steps instead of generic advice.</p></div><div><span>04</span><strong>Keep everyone aligned</strong><p>Shareable wedding information stays current while plans change.</p></div></div><a class="button primary" href="https://vivahaplan.com/" target="_blank" rel="noreferrer">Open Vivaha ↗</a></dialog>
-  <dialog class="project-modal architecture-modal" id="heair-modal"><button class="modal-close" type="button" aria-label="Close">×</button><p class="kicker">SYSTEM ARCHITECTURE</p><h2>Research framework, engineered into a working loop.</h2><img src="assets/heair-system-design.png" alt="HEAIR platform system architecture"><p>The platform connects role specific assessment data to deterministic scoring, secure storage, RAG backed research context, and LLM generated coaching so every recommendation stays grounded in the HEAIR framework.</p></dialog>
+  <dialog class="project-modal architecture-modal backend-modal" id="heair-modal">
+    <button class="modal-close" type="button" aria-label="Close">×</button>
+    <p class="kicker">BACKEND DEEP DIVE</p>
+    <h2>From approved research to page cited AI coaching.</h2>
+    <p class="modal-lede">HEAIR supplies the readiness framework. HEARMES turns it into a working platform with role adaptive assessments, deterministic scoring, secure data storage, and a research grounded AI coach.</p>
+    <img src="assets/heair-system-design.png" alt="Role adaptive AI readiness agent architecture showing assessment, retrieval, output, and analytics layers">
+    <div class="runtime-grid">
+      <article><span>LIVE ASSESSMENT ENGINE</span><strong>Scores stay deterministic.</strong><p>Each assessment includes 17 scored questions and four contextual questions. Responses map to 0, 25, 50, 75, or 100, then roll into four readiness dimensions. Unsure, unanswered, and inapplicable responses are excluded and reported separately as coverage.</p></article>
+      <article><span>LIVE AI COACH</span><strong>Advice stays connected to evidence.</strong><p>The Coach combines the saved readiness profile, stakeholder role, institutional context, and dimension comments with metadata and keyword matched research passages. A Claude based model explains results and proposes actions without calculating or changing readiness scores.</p></article>
+    </div>
+    <div class="backend-boundary">
+      <span>PRODUCTION BOUNDARY</span>
+      <strong>ORION prepares research offline. It does not serve live Coach requests.</strong>
+      <p>The public interface runs on GitHub Pages, calls a TypeScript and Fastify backend on Render, and stores application data through Prisma and PostgreSQL. Once research is validated and imported, the live backend retrieves it from the shared Coach collection.</p>
+    </div>
+    <div class="backend-pipeline">
+      <article><span>01</span><div><strong>Approve the source</strong><p>A local only dashboard accepts an approved, non-sensitive PDF with its exact title, citation, and source category.</p></div></article>
+      <article><span>02</span><div><strong>Send it securely to ORION</strong><p>An SSH connection established separately through Cisco Secure Client and Duo copies the PDF into UNC Charlotte ORION storage. Credentials never enter the dashboard.</p></div></article>
+      <article><span>03</span><div><strong>Build a page aware artifact</strong><p>A scheduled Slurm job extracts page text, creates overlapping 450 word chunks with a 350 word stride, and preserves page, section, role, title, and citation metadata.</p></div></article>
+      <article><span>04</span><div><strong>Verify before import</strong><p>The versioned JSON artifact records an input checksum and its own integrity checksum. It must complete on ORION, download successfully, pass validation, and clear a local database dry run.</p></div></article>
+      <article><span>05</span><div><strong>Publish to the Coach corpus</strong><p>An explicit Prisma transaction upserts the document and replaces its chunks in the Neon backed <code>heair_paper</code> collection. The Coach can then retrieve evidence and show the paper title, citation, and PDF page in its sources.</p></div></article>
+    </div>
+    <div class="modal-actions"><a class="button primary" href="assets/HEARMES-Role-Adaptive-AI-Readiness.pdf" target="_blank" rel="noreferrer">Read the research paper ↗</a><a class="button ghost" href="https://github.com/tanikellapratik23/HEARMES-Research-Publisher" target="_blank" rel="noreferrer">View the publisher repository ↗</a></div>
+  </dialog>
   <script src="script.js"></script>
 </body>
 </html>
